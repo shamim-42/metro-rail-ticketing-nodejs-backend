@@ -2,8 +2,8 @@
 
 A comprehensive RESTful API backend for the Metro Rail Ticketing mobile application, built with Node.js, Express.js, and MongoDB. This API powers a complete metro rail ticket booking system with user management, trip planning, fare calculation, and QR code-based ticketing.
 
-# Flutter Mobile App repository location: 
-### https://github.com/shamim-42/metro-rail-ticketing-flutter-mobileapp
+## Flutter Mobile App Repository
+**Flutter Mobile App:** https://github.com/shamim-42/metro-rail-ticketing-flutter-mobileapp
 
 ## 🚀 Features
 
