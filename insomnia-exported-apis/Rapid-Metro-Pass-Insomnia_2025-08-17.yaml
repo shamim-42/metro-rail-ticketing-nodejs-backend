@@ -1,0 +1,1001 @@
+type: collection.insomnia.rest/5.0
+name: Rapid Metro Pass
+meta:
+  id: wrk_d921e0098a2d462e99d646f061d5809f
+  created: 1742295133257
+  modified: 1755325851393
+  description: ""
+collection:
+  - name: Auth
+    meta:
+      id: fld_b15d752ce53a4d8b8f545eb5e7d095b1
+      created: 1753400871889
+      modified: 1753400879917
+      sortKey: -1753400871890
+      description: ""
+    children:
+      - url: https://z382ffuop3.execute-api.ap-southeast-1.amazonaws.com/dev/api/auth/register
+        name: Register
+        meta:
+          id: req_f58dc42456cb496d969cf3ff13611878
+          created: 1742295270990
+          modified: 1754170097943
+          isPrivate: false
+          description: ""
+          sortKey: -1753400882536
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"fullName": "Shamim Hossain",
+            	"email": "shamim4@example.com",
+            	"phoneNumber": "01911008346",
+            	"password": "Shamim123#"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}/api/auth/login"
+        name: Login
+        meta:
+          id: req_a75d3e510eab4253a5eba06f1d218e01
+          created: 1753400924924
+          modified: 1754173338471
+          isPrivate: false
+          description: ""
+          sortKey: -1753400783827.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "shamim@example.com",
+            	"password": "Shamim123#"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.baseUrl }}/api/fares"
+        name: Get All Fares
+        meta:
+          id: req_fe5c6eff6f5e4f6e8d78c7bb93e24ffb
+          created: 1753401020239
+          modified: 1754181314366
+          isPrivate: false
+          description: ""
+          sortKey: -1753400734473.25
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/api/fares/1"
+        name: Get Single Fare
+        meta:
+          id: req_61ff129a456643f882010468b9ec2c91
+          created: 1753401061975
+          modified: 1753401066437
+          isPrivate: false
+          description: ""
+          sortKey: -1753400709796.125
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.host }}/api/fares/route"
+        name: Fare Between Stations
+        meta:
+          id: req_aa051e07f7ae43ff818dad7c647ff625
+          created: 1753401093334
+          modified: 1753401165424
+          isPrivate: false
+          description: ""
+          sortKey: -1753400697457.5625
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        parameters:
+          - id: pair_39cb4458b5794ab5bf7b63e4ab0c8f41
+            name: fromStation
+            value: Mirpur10
+            description: ""
+            disabled: false
+          - id: pair_a9d6ea5aa927422f92da809b929c1c04
+            name: toStation
+            value: KaziPara
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:5001/api/fares
+        name: Create Fare
+        meta:
+          id: req_3fb89bf6cd1c4e93b0645ec590c4be57
+          created: 1753401188231
+          modified: 1754168785718
+          isPrivate: false
+          description: ""
+          sortKey: -1753400759150.375
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "fromStation": "Dhaka",
+              "toStation": "Chittagong",
+              "fare": 550,
+              "distance": 245,
+              "duration": "6h 30m",
+              "fareType": "regular",
+              "effectiveFrom": "2025-08-01",
+              "effectiveTo": "2025-12-31"
+            }
+        parameters:
+          - id: pair_39cb4458b5794ab5bf7b63e4ab0c8f41
+            name: fromStation
+            value: Mirpur10
+            description: ""
+            disabled: false
+          - id: pair_a9d6ea5aa927422f92da809b929c1c04
+            name: toStation
+            value: KaziPara
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/10.3.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJjOGQzNWJiZjIxN2JlNzYyZWUzNyIsImlhdCI6MTc1MzQwMTU1OSwiZXhwIjoxNzU0MDA2MzU5fQ.Voh-92WeR36yap7q-mFVSjRJgWjeLB2EMFbngmsQLXg
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Metro Rapid Pass API
+    meta:
+      id: fld_f31b4b7bfab54d9f90974dae9032e768
+      created: 1753401919688
+      modified: 1755350383402
+      sortKey: -1753401916811
+      description: Postman collection for Metro Rapid Pass backend API.
+    children:
+      - name: Auth
+        meta:
+          id: fld_64a608bc02af4051b4bc30818b7c4442
+          created: 1753401919690
+          modified: 1755350383402
+          sortKey: -1753401916809
+          description: ""
+        children:
+          - url: "{{baseUrl}}/auth/register"
+            name: Register
+            meta:
+              id: req_47c1bba7fd24493b8fb49fb52e673967
+              created: 1753401919690
+              modified: 1753401919690
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916808
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "fullName": "Test User",
+                  "email": "test@example.com",
+                  "phoneNumber": "+1234567890",
+                  "password": "password123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/auth/login"
+            name: Login
+            meta:
+              id: req_31ead72231444771a67e40014f0a4db3
+              created: 1753401919691
+              modified: 1755350382665
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916807
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "email": "mujahid@example.com",
+                  "password": "Mujahid123#"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: |
+                
+                const statusCode = insomnia.response.code;
+
+                if (statusCode <= 299) {
+                	const jsonBody = insomnia.response.json();
+                	insomnia.environment.set("token", jsonBody.data.token)
+                }
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/auth/me"
+            name: Get Current User
+            meta:
+              id: req_45b7a6fa7ff8479796a7bffed787205d
+              created: 1753401919691
+              modified: 1753401919691
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916806
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer {{token}}
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: User
+        meta:
+          id: fld_3c83c31d4e054107a99d108ebb7f5aa5
+          created: 1753401919692
+          modified: 1754129123481
+          sortKey: -1753401916805
+          description: ""
+        children:
+          - url: "{{baseUrl}}/users/profile"
+            name: Update Profile
+            meta:
+              id: req_3fb90ec75ba14900ba88ac0aafa6df60
+              created: 1753401919692
+              modified: 1753401981780
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916803
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "fullName": "Updated User",
+                  "phoneNumber": "+1234567899"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer {{token}}
+              - name: Content-Type
+                value: application/json
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/users/deposit"
+            name: Deposit Money
+            meta:
+              id: req_7bdd9b73e21f476fa288546b4dd7434d
+              created: 1753401919692
+              modified: 1753405038396
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916802
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "amount": 1238483,
+                  "paymentMethod": "cash"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJjOGQzNWJiZjIxN2JlNzYyZWUzNyIsImlhdCI6MTc1MzQwNDMwNSwiZXhwIjoxNzU0MDA5MTA1fQ.4Oo7MIBRnDRQ4aY9D7sVvA_pDjGMY--rHbobzEr4jlk
+                id: pair_b49a2a6414ce4c34a770e1c907e310a9
+              - name: Content-Type
+                value: application/json
+                id: pair_dd7f6cfc1de04dcbacac0cb3eb428d1d
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.baseUrl }}/users/profile"
+            name: Get Profile
+            meta:
+              id: req_cd06fd32dd614bf193e48f2a9db3adf8
+              created: 1753401919692
+              modified: 1755370489918
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916804
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
+                id: pair_01093796db1f4ad8a65b16d190413c0b
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{ _.token }}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/users/statistics"
+            name: Get Statistics
+            meta:
+              id: req_8ef33e1fa91c4bc3973c3918bbb645d3
+              created: 1753401919693
+              modified: 1753401919693
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916801
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer {{token}}
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Station
+        meta:
+          id: fld_2f57b33049d14ff883ffeb19fa887337
+          created: 1753401919693
+          modified: 1753401919693
+          sortKey: -1753401916800
+          description: ""
+        children:
+          - url: "{{baseUrl}}/stations"
+            name: Get All Stations
+            meta:
+              id: req_01c21693775a4620af850b3b82e5448b
+              created: 1753401919693
+              modified: 1755362696231
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916798
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.baseUrl }}/stations"
+            name: Create Station (Admin)
+            meta:
+              id: req_ba2a5e5c7c014df5a626fc271fe5238c
+              created: 1753401919693
+              modified: 1755351165142
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916799
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "name": "Pallabi",
+                	"code": "MB",
+
+                  "address": "Mirpur 12, Mirpur",
+                  "zone": "Central",
+                  "facilities": ["parking", "wifi"],
+                  "description": "Middle station"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
+                id: pair_2f91f09cde394532b71019cc57e85afe
+              - name: Content-Type
+                value: application/json
+                id: pair_6219f442b1fb40ffbfe3dc361e2e4442
+            authentication:
+              type: bearer
+              disabled: true
+              token: ""
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/stations/{{stationId}}"
+            name: Get Station By ID
+            meta:
+              id: req_929be84da8344a7aa28aa93d128c22cb
+              created: 1753401919694
+              modified: 1753401919694
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916797
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.baseUrl }}/stations/68a0b35aff425546796ee6f3"
+            name: Edit Station (Admin)
+            meta:
+              id: req_6eaf557568534e7c8dae3df982c4511c
+              created: 1755362576129
+              modified: 1755362800415
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916798.5
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "name": "Updated Station Name",
+                	"code": "US",
+                	"address": "Updated Address",
+                  "zone": "Zone A"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
+                id: pair_2f91f09cde394532b71019cc57e85afe
+              - name: Content-Type
+                value: application/json
+                id: pair_6219f442b1fb40ffbfe3dc361e2e4442
+            authentication:
+              type: bearer
+              disabled: true
+              token: ""
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Fare
+        meta:
+          id: fld_907ff146d41542b78c0922db558c7d16
+          created: 1753401919694
+          modified: 1753401919694
+          sortKey: -1753401916796
+          description: ""
+        children:
+          - url: "{{baseUrl}}/fares"
+            name: Create Fare (Admin)
+            meta:
+              id: req_0e8c391c550042ba8779193b08cc2e02
+              created: 1753401919694
+              modified: 1755363888026
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916795
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "fromStation": "68a0b0c4ff425546796ee6e4",
+                  "toStation": "6882d48942860144cec13e7e",
+                  "fare": 120,
+                  "distance": 82,
+                  "duration": 30,
+                  "fareType": "regular"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
+                id: pair_ceddc20f3e1a4db290b5ee8730e6e796
+              - name: Content-Type
+                value: application/json
+                id: pair_60ccdc87c2a04cf084ed3f5df98d1c4c
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/fares/{{fareId}}"
+            name: Get Fare By ID
+            meta:
+              id: req_0e46b8b3f5ad41e4b646407ca2f29cfa
+              created: 1753401919695
+              modified: 1753401919695
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916793
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/fares"
+            name: Get All Fares
+            meta:
+              id: req_6f7966a7c4ca4832aa99e1b7deb1907f
+              created: 1753401919695
+              modified: 1753527353053
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916794
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/fares/in-between"
+            name: Fare In Between
+            meta:
+              id: req_17c4deca49ad4072a9a6263ae01cc337
+              created: 1753527302380
+              modified: 1755338390054
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916793.5
+            method: GET
+            parameters:
+              - id: pair_3ecd33f350604b8a85a9bc342f302b65
+                name: fromStationId
+                value: 6882d41542860144cec13e6f
+                description: ""
+                disabled: false
+              - id: pair_fcbea11cd63b43afb55e0aeb82edbffe
+                name: toStationId
+                value: 6882d48942860144cec13e7e
+                description: ""
+                disabled: false
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/fares/6882d4db42860144cec13e86"
+            name: Edit Fare (Admin)
+            meta:
+              id: req_78a52207849544cdabf3e71b7651d4d4
+              created: 1755366358414
+              modified: 1755366434435
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916794.5
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "fare": 61,
+                  "distance": 5.5,
+                  "duration": 16
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
+                id: pair_ceddc20f3e1a4db290b5ee8730e6e796
+              - name: Content-Type
+                value: application/json
+                id: pair_60ccdc87c2a04cf084ed3f5df98d1c4c
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Trip
+        meta:
+          id: fld_d25e902059e34cb78d7680e31e6c12f0
+          created: 1753401919695
+          modified: 1753401919695
+          sortKey: -1753401916792
+          description: ""
+        children:
+          - url: "{{baseUrl}}/trips"
+            name: Create Trip
+            meta:
+              id: req_cf566312168d42a4b9a8202bdaf6131d
+              created: 1753401919695
+              modified: 1753405016216
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916791
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "fromStation": "6882d41542860144cec13e6e",
+                  "toStation": "6882d48942860144cec13e7e",
+                  "numberOfPassengers": 1,
+                  "paymentMethod": "balance"
+                }
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJjOGQzNWJiZjIxN2JlNzYyZWUzNyIsImlhdCI6MTc1MzQwNDMwNSwiZXhwIjoxNzU0MDA5MTA1fQ.4Oo7MIBRnDRQ4aY9D7sVvA_pDjGMY--rHbobzEr4jlk
+                id: pair_c13e8192aa1b48959854004e756e7355
+              - name: Content-Type
+                value: application/json
+                id: pair_f4809d1f0db745b2ae6d9c2a79e882b0
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/trips/unused"
+            name: Get Unused Trips
+            meta:
+              id: req_40cd0bc818fc4d23ad4fbcd6377e5c04
+              created: 1753401919696
+              modified: 1753401919696
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916789
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer {{token}}
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/trips/history"
+            name: Get Trip History
+            meta:
+              id: req_c9eb91b4ba80464d8a3df8ca27c4e2ed
+              created: 1753401919696
+              modified: 1753405092959
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916790
+            method: GET
+            headers:
+              - name: Authorization
+                value: Bearer
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJjOGQzNWJiZjIxN2JlNzYyZWUzNyIsImlhdCI6MTc1MzQwNDMwNSwiZXhwIjoxNzU0MDA5MTA1fQ.4Oo7MIBRnDRQ4aY9D7sVvA_pDjGMY--rHbobzEr4jlk
+                id: pair_fcfd82bf087340f9bdd850978c24a0e6
+            authentication:
+              type: bearer
+              disabled: false
+              token: "{{token}}"
+              prefix: ""
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{baseUrl}}/trips/use/{{tripId}}"
+            name: Use Trip (Scan QR)
+            meta:
+              id: req_d940d37bbabc4f2da6b0c376b82f3014
+              created: 1753401919696
+              modified: 1753401919696
+              isPrivate: false
+              description: ""
+              sortKey: -1753401916788
+            method: POST
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - url: "{{baseUrl}}/health"
+        name: Health Check
+        meta:
+          id: req_309946d12a9f4084bb455bf916948f71
+          created: 1753401919689
+          modified: 1753401919689
+          isPrivate: false
+          description: ""
+          sortKey: -1753401916810
+        method: GET
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+    environment:
+      baseUrl: http://localhost:5001/api
+      token: ""
+      userId: ""
+      stationId: ""
+      tripId: ""
+      fareId: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_07bdf3b510c341b6fa0424933e7e994d89e8eb22
+    created: 1742295185282
+    modified: 1755350383401
+environments:
+  name: Base Environment
+  meta:
+    id: env_07bdf3b510c341b6fa0424933e7e994d89e8eb22
+    created: 1742295185280
+    modified: 1755350383402
+    isPrivate: false
+  data:
+    baseUrl: http://localhost:5001/api
+    userId: ""
+    stationId: ""
+    tripId: ""
+    fareId: ""
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJjOGQzNWJiZjIxN2JlNzYyZWUzNyIsImlhdCI6MTc1MzQwNDIzMCwiZXhwIjoxNzU0MDA5MDMwfQ.hy_1SdwdTKQEeaydljjTQH15VvLftBd4hOK5irlfFeo
+  subEnvironments:
+    - name: Localhost
+      meta:
+        id: env_1c9b8a5236de45b39caec7ff63255b3c
+        created: 1753404274462
+        modified: 1755350383401
+        isPrivate: false
+        sortKey: 1753404274462
+      data:
+        baseUrl: https://z382ffuop3.execute-api.ap-southeast-1.amazonaws.com/dev
+        userId: ""
+        stationId: ""
+        tripId: ""
+        fareId: ""
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJkOGNmZDIwYmNlNTBhODJhZDI5YiIsImlhdCI6MTc1NTM1MDM4MywiZXhwIjoxNzU1OTU1MTgzfQ.3CSNa_EzacQkHwX_ZmuhcrtvWwMgeVWZpRm5QU5D_i8
